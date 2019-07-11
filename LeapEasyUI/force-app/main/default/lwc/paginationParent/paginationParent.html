@@ -1,0 +1,12 @@
+
+<template >  
+    <lightning-card>  
+      <c-account-n-table currentpage={page} onrecordsload={handleRecordsLoad} pagesize={pagesize}></c-account-n-table>  
+      <div class="slds-m-around_medium">  
+        <c-paginator-bottom onprevious={handlePrevious} onnext={handleNext} onfirst={handleFirst}  
+          onlast={handleLast} currentpage={page} totalrecords={totalrecords} pagesize={pagesize}>  
+        </c-paginator-bottom>  
+      </div>  
+      <c-account-sync ></c-account-sync>
+    </lightning-card>  
+  </template>  

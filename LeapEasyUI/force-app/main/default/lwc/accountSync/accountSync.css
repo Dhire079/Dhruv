@@ -1,0 +1,10 @@
+.custom-box {
+    background-color: #f4f6f9;
+    
+}
+.THIS .slds-dueling-list__column_responsive {
+    min-width: 100%;
+}
+.THIS .slds-dueling-list__column_responsive .slds-dueling-list__options {
+    min-width: 100%;
+} 
