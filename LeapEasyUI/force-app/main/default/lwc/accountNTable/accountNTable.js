@@ -11,10 +11,7 @@ import { LightningElement, track, api } from 'lwc';
    @track checkStatus=[];
    @track accountId=[];
    @track searchKey;  
-   @api acc=this.accountId;
-   @track z;
    @track records=[];
-   @track a=0;
    totalpages;  
    localCurrentPage = null;  
    isSearchChangeExecuted = false; 
@@ -25,7 +22,8 @@ import { LightningElement, track, api } from 'lwc';
      /*eslint no-else-return: 0*/
       /*eslint consistent-return: 0*/
       /*eslint getter-return: 0*/
-      handleAll()
+      
+      handleAll() // select all logic
       {
         var g =this.template.querySelector('input');
         var a = this.template.querySelectorAll('input');
@@ -50,14 +48,13 @@ import { LightningElement, track, api } from 'lwc';
                 }
             }
           }
-        
-         
        }
       }
     }
       }
     }
-  updateList()
+
+  updateList() // keeping track of individually selected checkboxes logic
     {
       this.template.querySelector('input[name=options]').checked=false;
       console.log('inbois');
@@ -68,18 +65,15 @@ import { LightningElement, track, api } from 'lwc';
         if(a[b].name===this.accountId[i])
         {
           a[b].checked=true;
-          
-          
+
         }
        }
       }
-     
     }
 
- handleClick(event)
+ handleClick(event) // push or pull info of selected account
  {
   
-   
    if(event.target.checked===true)
    {
     this.accountId.push(event.target.name);
@@ -92,31 +86,29 @@ import { LightningElement, track, api } from 'lwc';
         this.accountId.splice(i, 1); 
       }
    }
-   
-   
    }
-
-   
  }
  
 
-   handleKeyChange(event) {  
+   handleKeyChange(event) {   // search dialog box key
      if (this.searchKey !== event.target.value) {  
        this.isSearchChangeExecuted = false;  
        this.searchKey = event.target.value;  
        this.currentpage = 1;  
      }  
    }  
+
    renderedCallback() {  
-     // This line added to avoid duplicate/multiple executions of this code.
+     //To keep the selected checkboxes on page turn or search
      this.updateList();
-  
+       // This line added to avoid duplicate/multiple executions of this code.
+
      if (this.isSearchChangeExecuted && (this.localCurrentPage === this.currentpage)) {  
        return;  
      }  
      this.isSearchChangeExecuted = true;  
      this.localCurrentPage = this.currentpage;  
-     getAccountsCount({ searchString: this.searchKey })  
+     getAccountsCount({ searchString: this.searchKey })  //retrieve the accounts for the current page
        .then(recordsCount => {  
          this.totalrecords = recordsCount;  
          if (recordsCount !== 0 && !isNaN(recordsCount)) {  
@@ -126,7 +118,7 @@ import { LightningElement, track, api } from 'lwc';
                this.accounts = accountList;  
                this.error = undefined;  
              })  
-             .catch(error => {  
+             .catch(error => {  //error handling
                this.error = error;  
                this.accounts = undefined;  
              });  

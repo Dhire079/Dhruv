@@ -16,7 +16,7 @@
                                                     <div class="slds-form-element">
                                                             <div class="slds-form-element__control">
                                                                 <label class="slds-checkbox">
-                                                                    <input type="checkbox"  name="options" onchange={handleAll} />
+                                                                    <input type="checkbox"  name="options" onchange={handleAll} /> <!--select all checkbox-->
 
                                                                     <span class="slds-checkbox_faux"></span>
                                                                     <span class="slds-form-element__label"></span>
@@ -37,14 +37,8 @@
                                                     <div class="slds-form-element" ></label>
                                                             <div class="slds-form-element__control" >
                                                                 <label class="slds-checkbox"  >
-                                                                  <!-- <template if:true={updateList}></template> -->
-                                                                        <input type="checkbox" name={account.Id} onchange={handleClick} />
-                                                                      <!-- </template> -->
+                                                                        <input type="checkbox" name={account.Id} onchange={handleClick} /><!--generate individual checkboxes for each account-->
 
-                                                                    <!-- <template if:true={isChecked}> -->
-                                                                      
-                                                                      <!-- </template> -->
-                                             
                                                                     <span class="slds-checkbox_faux"></span>
                                                                     <span class="slds-form-element__label"></span>
                                                                 </label>
