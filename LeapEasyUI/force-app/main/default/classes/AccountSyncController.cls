@@ -29,10 +29,8 @@ public static Map<String, String> getAccountFields() {
     Map<String, Schema.SObjectField> fieldMap = Schema.getGlobalDescribe().get('Account').getDescribe().fields.getMap();
     system.debug(fieldMap);
     for (String fieldName: fieldMap.keySet()) { 
-      System.debug('How many'); 
         retVal.put(fieldName, fieldMap.get(fieldName).getDescribe().getLabel());
     }
-    System.debug('return is '+retVal.values());
     return retVal;
 }
 }
