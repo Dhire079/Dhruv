@@ -4,7 +4,7 @@ import { LightningElement, track} from 'lwc';
  export default class accountSync extends LightningElement {  
    @track _selected = [];
     @track maps=getAccountFields().then(map=>{this.maps=map;});
-    @track partnerId=[];
+    @track partnerIds=[];
     @track partners=['Hugh Jackman','Ryan Gosling'];
 
     /*eslint vars-on-top: 0*/
@@ -58,7 +58,6 @@ import { LightningElement, track} from 'lwc';
             }
          }
          }
-      console.log('sdfsd'+this.partnerId);
        }
 
   get options(){ // fill the options of the duallistbox
