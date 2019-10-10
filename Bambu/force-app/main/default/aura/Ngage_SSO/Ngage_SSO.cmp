@@ -1,0 +1,40 @@
+<aura:component
+  controller="FIS_SSO_tokenHandler"
+  implements="force:appHostable,force:lightningQuickActionWithoutHeader,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes"
+  access="global"
+>
+  <aura:handler name="init" value="{!this}" action="{!c.account}" />
+  <aura:attribute name="picklistValues" type="Object" />
+  <aura:attribute name="req" type="string" description="request " />
+  <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+    Launch Engage
+  </h2>
+
+  <lightning:select
+    name="Select a Request Type"
+    required="true"
+    label="Select a Request Type"
+    value="{!v.req}"
+  >
+    <option value="">-- None --</option>
+    <aura:iteration items="{!v.picklistValues}" var="color">
+      <option value="{!color}" text="{!color}"></option>
+    </aura:iteration>
+  </lightning:select>
+
+  <footer class="slds-modal__footer">
+      
+    <lightning:button
+      variant="neutral"
+      label="Cancel"
+      title="Cancel"
+      onclick="{! c.closeModel }"
+    />
+    <lightning:button
+      variant="brand"
+      label="Launch"
+      title="Launch"
+      onclick="{! c.launch }"
+    />
+  </footer>
+</aura:component>
