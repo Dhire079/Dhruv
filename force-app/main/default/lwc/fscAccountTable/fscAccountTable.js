@@ -1,9 +1,11 @@
 import { LightningElement,track,wire } from 'lwc';
 import getFSCAccounts from '@salesforce/apex/FscAccountTableController.getFSCAccounts';
+import filterFSCAccounts from '@salesforce/apex/FscAccountTableController.filterFSCAccounts';
+
 import { ShowToastEvent } from 'lightning/platformShowToastEvent'
 
 const columns = [
-    { label: 'Account Name', fieldName: 'nameurl__c', sortable: 'true', editable: true,type:'url',
+    { label: 'Account Name', fieldName: 'nameurl__c', sortable: 'true',type:'url',
     typeAttributes: {
         label: { fieldName: 'Name' }, target: '_blank', tooltip: { fieldName: 'Name' } 
     }},
@@ -64,6 +66,10 @@ const columns = [
         });
         this.accountsList = parseData;
         }
+        filterAccounts(event)
+        {
+          filterFSCAccounts({searchKey : event.target.value}).then(accountList =>{this.accountsList = accountList});
+        }
 
 
      // Show Toast Messages
@@ -76,4 +82,3 @@ const columns = [
     this.dispatchEvent(evt);
   }
 }
-
