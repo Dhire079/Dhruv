@@ -23,6 +23,7 @@ const columns = [
     accountsList;
     backupResponseFromWire;
 
+    // Get accounts with indurty = 'financial services'
     @wire(getFSCAccounts, {})
     wiredAccounts(resp) {
 
@@ -41,14 +42,14 @@ const columns = [
         this.showNotification("error","Error getting Account data", error );
         }
     }
-
-    doSorting(event) {
+        // Assign sorting direction and sorting field
+        doSorting(event) {
         this.sortBy = event.detail.fieldName;
         this.sortDirection = event.detail.sortDirection;
         this.sortData(this.sortBy, this.sortDirection);
         }
 
-
+        // Sort based on direction chosen in the table and the field
         sortData(fieldname, direction) {
         let parseData = JSON.parse(JSON.stringify(this.accountsList));
         // Return the value stored in the field
@@ -66,19 +67,21 @@ const columns = [
         });
         this.accountsList = parseData;
         }
+
+        //Call apex method to filter accounts on the table based on user input -> account name
         filterAccounts(event)
         {
           filterFSCAccounts({searchKey : event.target.value}).then(accountList =>{this.accountsList = accountList});
         }
 
 
-     // Show Toast Messages
-  showNotification(variant, title, message) {
-    const evt = new ShowToastEvent({
-      title: title,
-      message: message,
-      variant: variant
-    });
-    this.dispatchEvent(evt);
-  }
+        // Show Toast Messages
+        showNotification(variant, title, message) {
+          const evt = new ShowToastEvent({
+            title: title,
+            message: message,
+            variant: variant
+          });
+          this.dispatchEvent(evt);
+        }
 }
