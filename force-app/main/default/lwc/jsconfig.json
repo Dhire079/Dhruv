@@ -1,26 +1,16 @@
 {
     "compilerOptions": {
-        "baseUrl": ".",
-        "paths": {
-            "c/accountNTable": [
-                "accountNTable/accountNTable.js"
-            ],
-            "c/accountSync": [
-                "accountSync/accountSync.js"
-            ],
-            "c/paginationParent": [
-                "paginationParent/paginationParent.js"
-            ],
-            "c/paginatorBottom": [
-                "paginatorBottom/paginatorBottom.js"
-            ]
-        },
         "experimentalDecorators": true
     },
     "include": [
         "**/*",
         "../../../../.sfdx/typings/lwc/**/*.d.ts"
     ],
+    "paths": {
+        "c/*": [
+            "*"
+        ]
+    },
     "typeAcquisition": {
         "include": [
             "jest"

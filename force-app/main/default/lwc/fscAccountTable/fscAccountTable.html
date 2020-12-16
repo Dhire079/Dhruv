@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title='Financial Services Account Listing'  >
+        <lightning-datatable
+        data={accountsList}
+        columns={columns}
+        key-field=”id”
+        sorted-by={sortBy}
+        sorted-direction={sortDirection}
+        onsort={doSorting}
+        hide-checkbox-column=”true”
+        ></lightning-datatable>
+        </lightning-card>
+</template>
